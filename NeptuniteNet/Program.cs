@@ -1,4 +1,5 @@
 ﻿using Neptunite.Configuration;
+using Neptunite.Image;
 
 namespace Neptunite;
 internal static class Program
@@ -7,6 +8,10 @@ internal static class Program
   {
     // 1. Read configuration
     ParameterSchema parameter = Parameters.DeserializeFromFile();
-    Parameters.PrintParameters(parameter);
+    Parameters.PrintParameters(in parameter);
+
+    // 2. Load path of all `.jpg` and `.jpeg` files into memory
+    Images images = Load.PathOfImages(in parameter);
+    Load.PrintImagesCount(images);
   }
 }

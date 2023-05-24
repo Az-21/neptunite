@@ -29,19 +29,14 @@ internal static class Parameters
 
   public static void PrintParameters(in ParameterSchema parameter)
   {
-    Table table = new();
-
-    // Headers
-    table.AddColumn("[green]Parameter[/]");
-    table.AddColumn("[green]Value[/]");
-
-    // Values
-    table.AddRow("Iteration limit", parameter.IterationLimit.ToString());
-    table.AddRow("Population size", parameter.PopulationSize.ToString());
-    table.AddRow("Path of training dataset with feature", parameter.DatasetWithFeature);
-    table.AddRow("Path of training dataset without feature", parameter.DatasetWithoutFeature);
-
-    table.Border(TableBorder.Rounded);
-    AnsiConsole.Write(table);
+    AnsiConsole.Write(new Table()
+      .Border(TableBorder.Rounded)
+      .AddColumn("[green]Parameter[/]")
+      .AddColumn("[green]Value[/]")
+      .AddRow("Iteration limit", parameter.IterationLimit.ToString())
+      .AddRow("Population size", parameter.PopulationSize.ToString())
+      .AddRow("Path of training dataset with feature", parameter.DatasetWithFeature)
+      .AddRow("Path of training dataset without feature", parameter.DatasetWithoutFeature)
+    );
   }
 }

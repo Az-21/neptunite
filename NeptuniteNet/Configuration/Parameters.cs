@@ -5,7 +5,9 @@ namespace Neptunite.Configuration;
 
 public readonly record struct ParameterSchema(
   ushort IterationLimit,
-  byte PopulationSize
+  byte PopulationSize,
+  string DatasetWithFeature,
+  string DatasetWithoutFeature
 );
 
 internal static class Parameters
@@ -34,8 +36,10 @@ internal static class Parameters
     table.AddColumn("[green]Value[/]");
 
     // Values
-    table.AddRow("Iteration Limit", parameter.IterationLimit.ToString());
-    table.AddRow("Population Size", parameter.PopulationSize.ToString());
+    table.AddRow("Iteration limit", parameter.IterationLimit.ToString());
+    table.AddRow("Population size", parameter.PopulationSize.ToString());
+    table.AddRow("Path of training dataset with feature", parameter.DatasetWithFeature);
+    table.AddRow("Path of training dataset without feature", parameter.DatasetWithoutFeature);
 
     table.Border(TableBorder.Rounded);
     AnsiConsole.Write(table);

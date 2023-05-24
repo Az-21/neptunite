@@ -1,9 +1,12 @@
-﻿namespace Neptunite;
+﻿using Neptunite.Configuration;
 
+namespace Neptunite;
 internal static class Program
 {
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello, World!");
-    }
+  static void Main()
+  {
+    // 1. Read configuration
+    ParameterSchema parameter = Parameters.DeserializeFromFile();
+    Parameters.PrintParameters(parameter);
+  }
 }

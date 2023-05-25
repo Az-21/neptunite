@@ -22,5 +22,6 @@ internal static class Matrix
 
   const int MinMaskValue = -5;
   const int MaxMaskValue = 5;
-  private static int GenerateRandomMaskElement() => Random.Shared.Next(MinMaskValue, MaxMaskValue);
+  public static sbyte GenerateRandomMaskElement() =>
+    (sbyte)Random.Shared.Next(MinMaskValue, MaxMaskValue);
 }

@@ -1,12 +1,12 @@
 ﻿namespace Neptunite.Matrix;
 internal static class SquareMatrix
 {
-  public static byte[][] Create(byte dimension, byte fillWith = 0)
+  public static sbyte[][] Create(in byte dimension, in sbyte fillWith = 0)
   {
-    byte[][] matrix = new byte[dimension][];
+    sbyte[][] matrix = new sbyte[dimension][];
     for (int i = 0; i < dimension; i++)
     {
-      byte[] row = new byte[dimension];
+      sbyte[] row = new sbyte[dimension];
       for (int j = 0; j < dimension; j++) { row[j] = fillWith; }
     }
 

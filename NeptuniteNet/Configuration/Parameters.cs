@@ -6,6 +6,7 @@ namespace Neptunite.Configuration;
 public readonly record struct ParameterSchema(
   ushort IterationLimit,
   byte PopulationSize,
+  double MutationThreshold, // Higher threshold will produce fewer mutations
   string DatasetWithFeature,
   string DatasetWithoutFeature,
   byte ConvolutionMatrixDimension
@@ -42,6 +43,7 @@ internal static class Parameters
         .AddRow("Iteration limit", parameter.IterationLimit.ToString())
         .AddRow("Population size", parameter.PopulationSize.ToString())
         .AddRow("Convolution matrix dimension", convolutionMatrixDimension)
+        .AddRow("Mutation threshold", parameter.MutationThreshold.ToString())
         .AddRow("Path of training dataset with feature", parameter.DatasetWithFeature)
         .AddRow("Path of training dataset without feature", parameter.DatasetWithoutFeature)
       );
@@ -55,7 +57,15 @@ internal static class Parameters
       AnsiConsole.MarkupLine("Convolution matrix dimension must be odd");
       Environment.Exit(0);
     }
+
+    if (!VerifyThresholdRange(parameter.MutationThreshold))
+    {
+      AnsiConsole.MarkupLine("[red]FATAL[/]");
+      AnsiConsole.MarkupLine("Mutation threshold must be in [0, 1)");
+      Environment.Exit(0);
+    }
   }
 
   private static bool VerifyConvolutionMatrixDimension(in byte dimension) => dimension % 2 != 0;
+  private static bool VerifyThresholdRange(in double threshold) => threshold is >= 0 and < 1;
 }

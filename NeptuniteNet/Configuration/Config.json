@@ -3,4 +3,5 @@
   "PopulationSize": 6,
   "DatasetWithFeature": "C:\\Dev\\Dataset\\True",
   "DatasetWithoutFeature": "C:\\Dev\\Dataset\\False",
+  "ConvolutionMatrixDimension": 3,
 }

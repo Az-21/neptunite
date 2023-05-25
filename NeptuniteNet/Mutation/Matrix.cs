@@ -12,7 +12,10 @@ internal static class Matrix
     {
       for (int j = 0; j < width; j++)
       {
-        if (parameter.MutationThreshold > Random.Shared.NextDouble()) { matrix[i][j] = (sbyte)GenerateRandomMaskElement(); }
+        if (parameter.MutationThreshold > Random.Shared.NextDouble())
+        {
+          matrix[i][j] = (sbyte)GenerateRandomMaskElement();
+        }
       }
     }
   }

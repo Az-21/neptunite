@@ -3,9 +3,6 @@
 namespace Neptunite.Mutation;
 internal static class Matrix
 {
-  // TODO: Make multi-threading safe
-  static readonly Random random = new();
-
   public static void MutateInplace(ref sbyte[][] matrix, in ParameterSchema parameter)
   {
     int height = matrix.Length;
@@ -15,12 +12,12 @@ internal static class Matrix
     {
       for (int j = 0; j < width; j++)
       {
-        if (parameter.MutationThreshold > random.NextDouble()) { matrix[i][j] = (sbyte)GenerateRandomMaskElement(); }
+        if (parameter.MutationThreshold > Random.Shared.NextDouble()) { matrix[i][j] = (sbyte)GenerateRandomMaskElement(); }
       }
     }
   }
 
   const int MinMaskValue = -5;
   const int MaxMaskValue = 5;
-  private static int GenerateRandomMaskElement() => random.Next(MinMaskValue, MaxMaskValue);
+  private static int GenerateRandomMaskElement() => Random.Shared.Next(MinMaskValue, MaxMaskValue);
 }

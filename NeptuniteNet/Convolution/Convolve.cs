@@ -9,9 +9,11 @@ internal static class Convolve
 
   private static int[][] TwoMatrices(in byte[][] matrix, in sbyte[][] mask)
   {
+    byte[][] paddedMatrix = Matrix.PadMatrix.WithZeros(in matrix);
+
     int offset = CalculateIndexOffset(in mask);
-    int height = matrix.Length;
-    int width = matrix[0].Length;
+    int height = paddedMatrix.Length;
+    int width = paddedMatrix[0].Length;
 
     int[][] convolvedMatrix = new int[height][];
 
@@ -20,7 +22,7 @@ internal static class Convolve
       int[] row = new int[width];
       for (int j = offset; j < width - offset; j++)
       {
-        row[j] = ReplaceSourcePixel(in matrix, in mask, in i, in j, in offset);
+        row[j] = ReplaceSourcePixel(in paddedMatrix, in mask, in i, in j, in offset);
       }
       convolvedMatrix[i] = row;
     }

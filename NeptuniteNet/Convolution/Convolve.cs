@@ -20,7 +20,7 @@ internal static class Convolve
       int[] row = new int[width];
       for (int j = offset; j < width - offset; j++)
       {
-        row[j] = ReplaceSourcePixel(in matrix, in mask, in i, in j, offset);
+        row[j] = ReplaceSourcePixel(in matrix, in mask, in i, in j, in offset);
       }
       convolvedMatrix[i] = row;
     }
@@ -28,7 +28,7 @@ internal static class Convolve
     return convolvedMatrix;
   }
 
-  private static int ReplaceSourcePixel(in byte[][] matrix, in sbyte[][] mask, in int i, in int j, int offset)
+  private static int ReplaceSourcePixel(in byte[][] matrix, in sbyte[][] mask, in int i, in int j, in int offset)
   {
     int maskRow = 0;
     int maskCol = 0;

@@ -22,7 +22,7 @@ Image     Image     Image     Image
 internal static class Structure
 {
   const int BaseLayerWidth = 4;
-  private static int ApplyChromosomeOnImage(in Pop chromosome, in byte[][] image)
+  private static int ApplyChromosomeOnImage(in Pop chromosome, in byte[][] image, in bool isImageWithFeature)
   {
     // Copy image for different convolutions
     int[][][] gpMatrix = new int[BaseLayerWidth][][];
@@ -71,17 +71,17 @@ internal static class Structure
     );
 
     // 5. Special product of final two matrices (at depth = 2)
-    return Evaluate.Fitness(in gpMatrix[0], in gpMatrix[1]);
+    return Evaluate.Fitness(in gpMatrix[0], in gpMatrix[1], in isImageWithFeature);
   }
 
-  private static int[] ApplyPopulationOnImage(in Pop[] population, in byte[][] image)
+  private static int[] ApplyPopulationOnImage(in Pop[] population, in byte[][] image, in bool isImageWithFeature)
   {
     int popSize = population.Length;
     int[] fitness = new int[popSize];
 
     for (int i = 0; i < popSize; i++)
     {
-      fitness[i] = ApplyChromosomeOnImage(in population[i], in image);
+      fitness[i] = ApplyChromosomeOnImage(in population[i], in image, in isImageWithFeature);
     }
 
     return fitness;
@@ -96,7 +96,7 @@ internal static class Structure
     for (int i = 0; i < images.WithFeature.Count; i++)
     {
       byte[][] image = Parse.AsGrayscaleImageMatrix(images.WithFeature[i]);
-      int[] singleImageFitness = ApplyPopulationOnImage(in population, in image);
+      int[] singleImageFitness = ApplyPopulationOnImage(in population, in image, in isImageWithFeature);
       for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
     }
 
@@ -104,7 +104,7 @@ internal static class Structure
     for (int i = 0; i < images.WithoutFeature.Count; i++)
     {
       byte[][] image = Parse.AsGrayscaleImageMatrix(images.WithoutFeature[i]);
-      int[] singleImageFitness = ApplyPopulationOnImage(in population, in image);
+      int[] singleImageFitness = ApplyPopulationOnImage(in population, in image, in isImageWithFeature);
       for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
     }
 

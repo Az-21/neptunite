@@ -16,13 +16,15 @@ internal static class Evaluate
     return product;
   }
 
-  // Assign +3 to correct answer, 0 to incorrect answer
-  const int CorrectAnswerScore = 3;
-  const int IncorrectAnswerScore = 0;
-  public static int Fitness(in int[][] matrixA, in int[][] matrixB)
+  // Assign +1 to correct answer, -1 to incorrect answer
+  // Here, we're just forcing algorithm to classify to left and right of x=0
+  const int CorrectAnswerScore = 1;
+  const int IncorrectAnswerScore = -1;
+  public static int Fitness(in int[][] matrixA, in int[][] matrixB, in bool isImageWithFeature)
   {
     int customMatrixProduct = CustomMatrixProduct(matrixA, matrixB);
-    if (customMatrixProduct >= 1) { return CorrectAnswerScore; }
+    if (customMatrixProduct >= 0 && isImageWithFeature) { return CorrectAnswerScore; }
+    if (customMatrixProduct < 0 && !isImageWithFeature) { return CorrectAnswerScore; }
     return IncorrectAnswerScore;
   }
 }

@@ -13,25 +13,39 @@ internal static class TypeOneFunction
   }
 
   private static readonly Func<int, int> LogBase10 = (x) => (int)Math.Log10(x);
-  public static void LogBase10Inplace(ref int[][] matrix) => Apply(ref matrix, LogBase10);
+  private static void LogBase10Inplace(ref int[][] matrix) => Apply(ref matrix, LogBase10);
 
   private static readonly Func<int, int> LogBase2 = (x) => (int)Math.Log2(x);
-  public static void LogBase2Inplace(ref int[][] matrix) => Apply(ref matrix, LogBase2);
+  private static void LogBase2Inplace(ref int[][] matrix) => Apply(ref matrix, LogBase2);
 
   private static readonly Func<int, int> NaturalLog = (x) => (int)Math.Log(x);
-  public static void NaturalLogInplace(ref int[][] matrix) => Apply(ref matrix, NaturalLog);
+  private static void NaturalLogInplace(ref int[][] matrix) => Apply(ref matrix, NaturalLog);
 
   private static readonly Func<int, int> Sin = (x) => (int)Math.Sin(x); // Angle is in degree
-  public static void SinInplace(ref int[][] matrix) => Apply(ref matrix, Sin);
+  private static void SinInplace(ref int[][] matrix) => Apply(ref matrix, Sin);
 
   private static readonly Func<int, int> Cos = (x) => (int)Math.Cos(x); // Angle is in degree
-  public static void CosInplace(ref int[][] matrix) => Apply(ref matrix, Cos);
+  private static void CosInplace(ref int[][] matrix) => Apply(ref matrix, Cos);
 
   private static readonly Func<int, int> Tan = (x) => (int)Math.Tan(x); // Angle is in degree
-  public static void TanInplace(ref int[][] matrix) => Apply(ref matrix, Tan);
+  private static void TanInplace(ref int[][] matrix) => Apply(ref matrix, Tan);
 
-  public enum TypeOneNode
+  public enum TypeOneOperation
   {
     LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan,
+  }
+
+  public static void ApplyTypeOneOperationInplace(ref int[][] matrix, in TypeOneOperation operation)
+  {
+    switch (operation)
+    {
+      case TypeOneOperation.LogBase10: LogBase10Inplace(ref matrix); break;
+      case TypeOneOperation.LogBase2: LogBase2Inplace(ref matrix); break;
+      case TypeOneOperation.NaturalLog: NaturalLogInplace(ref matrix); break;
+      case TypeOneOperation.Sin: SinInplace(ref matrix); break;
+      case TypeOneOperation.Cos: CosInplace(ref matrix); break;
+      case TypeOneOperation.Tan: TanInplace(ref matrix); break;
+      default: throw new NotImplementedException();
+    }
   }
 }

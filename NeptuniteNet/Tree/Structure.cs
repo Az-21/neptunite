@@ -22,17 +22,16 @@ Image     Image     Image     Image
 internal static class Structure
 {
   const int BaseLayerWidth = 4;
-  private static int ApplyChromosomeOnImage(in Pop chromosome, in byte[][] image, in bool isImageWithFeature)
+  private static int ApplyChromosomeOnImage(in Pop chromosome, in Image.Matrix image, in bool isImageWithFeature)
   {
     // Copy image for different convolutions
-    int[][][] gpMatrix = new int[BaseLayerWidth][][];
-    byte[][][] gpMatrixByte = new byte[BaseLayerWidth][][];
-    for (int i = 0; i < BaseLayerWidth; i++) { gpMatrixByte[i] = image; }
+    Image.Matrix[] gpMatrix = new Image.Matrix[BaseLayerWidth];
+    for (int i = 0; i < BaseLayerWidth; i++) { gpMatrix[i] = image; }
 
     for (int i = 0; i < BaseLayerWidth; i++)
     {
       // 1. Convolution
-      gpMatrix[i] = Convolve.TwoMatrices(gpMatrixByte[i], chromosome.ConvolutionChromosome[i]);
+      gpMatrix[i] = Convolve.TwoMatrices(gpMatrix[i], chromosome.ConvolutionChromosome[i]);
 
       // 2. Type 1 function
       TypeOneFunction.ApplyTypeOneOperationInplace(ref gpMatrix[i], chromosome.T1Chromosome[i]);
@@ -74,7 +73,7 @@ internal static class Structure
     return Evaluate.Fitness(in gpMatrix[0], in gpMatrix[1], in isImageWithFeature);
   }
 
-  private static int[] ApplyPopulationOnImage(in Pop[] population, in byte[][] image, in bool isImageWithFeature)
+  private static int[] ApplyPopulationOnImage(in Pop[] population, in Image.Matrix image, in bool isImageWithFeature)
   {
     int popSize = population.Length;
     int[] fitness = new int[popSize];
@@ -95,7 +94,7 @@ internal static class Structure
     bool isImageWithFeature = true;
     for (int i = 0; i < images.WithFeature.Count; i++)
     {
-      byte[][] image = Parse.AsGrayscaleImageMatrix(images.WithFeature[i]);
+      Image.Matrix image = Parse.AsGrayscaleImageMatrix(images.WithFeature[i]);
       int[] singleImageFitness = ApplyPopulationOnImage(in population, in image, in isImageWithFeature);
       for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
     }
@@ -103,7 +102,7 @@ internal static class Structure
     isImageWithFeature = false;
     for (int i = 0; i < images.WithoutFeature.Count; i++)
     {
-      byte[][] image = Parse.AsGrayscaleImageMatrix(images.WithoutFeature[i]);
+      Image.Matrix image = Parse.AsGrayscaleImageMatrix(images.WithoutFeature[i]);
       int[] singleImageFitness = ApplyPopulationOnImage(in population, in image, in isImageWithFeature);
       for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
     }

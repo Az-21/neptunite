@@ -4,18 +4,18 @@ namespace Neptunite.Image;
 
 internal static class Parse
 {
-  public static byte[][] AsGrayscaleImageMatrix(in string imagePath)
+  public static Image.Matrix AsGrayscaleImageMatrix(in string imagePath)
   {
     SKBitmap image = SKBitmap.Decode(imagePath);
     int width = image.Width;
     int height = image.Height;
 
     // Note: Rectangular array [,] is better suited for this operation, but Microsoft has poorly implemented it
-    byte[][] grayscale = new byte[height][];
+    int[][] grayscale = new int[height][];
 
     for (int i = 0; i < height; i++)
     {
-      byte[] pixelRow = new byte[width];
+      int[] pixelRow = new int[width];
       for (int j = 0; j < width; j++)
       {
         SKColor color = image.GetPixel(i, j);
@@ -27,7 +27,7 @@ internal static class Parse
       grayscale[i] = pixelRow;
     }
 
-    return grayscale;
+    return new Image.Matrix(grayscale);
   }
 
   private static byte ConvertPixelToGrayLevel(in SKColor color)

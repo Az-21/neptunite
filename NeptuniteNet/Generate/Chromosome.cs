@@ -24,26 +24,27 @@ internal static partial class Chromosome
 
 internal static partial class Chromosome
 {
-  private static sbyte[][] RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
+  private static Image.Matrix RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
   {
     byte dimension = parameter.ConvolutionMatrixDimension;
-    sbyte[][] matrix = new sbyte[dimension][];
+    int[][] matrix = new int[dimension][];
     for (int i = 0; i < dimension; i++)
     {
-      sbyte[] row = new sbyte[dimension];
+      int[] row = new int[dimension];
       for (int j = 0; j < dimension; j++)
       {
         row[j] = Mutation.Chromosome.GenerateRandomMaskElement();
       }
+      matrix[i] = row;
     }
 
-    return matrix;
+    return new Image.Matrix(matrix);
   }
 
   public const int ConvolutionChromosomeLength = 5;
-  public static sbyte[][][] RandomlyGenerateConvolutionChromosome(in ParameterSchema parameter)
+  public static Image.Matrix[] RandomlyGenerateConvolutionChromosome(in ParameterSchema parameter)
   {
-    sbyte[][][] chromosome = new sbyte[ConvolutionChromosomeLength][][];
+    Image.Matrix[] chromosome = new Image.Matrix[ConvolutionChromosomeLength];
     for (int i = 0; i < ConvolutionChromosomeLength; i++)
     {
       chromosome[i] = RandomlyGenerateConvolutionMask(in parameter);

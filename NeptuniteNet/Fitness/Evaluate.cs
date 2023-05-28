@@ -2,14 +2,14 @@
 internal static class Evaluate
 {
   // Custom product of two last remaining nodes (at depth=2)
-  private static int CustomMatrixProduct(in int[][] matrixA, in int[][] matrixB)
+  private static int CustomMatrixProduct(in Image.Matrix matrixA, in Image.Matrix matrixB)
   {
     int product = 0;
-    for (int i = 0; i < matrixA.Length; i++)
+    for (int i = 0; i < matrixA.Height; i++)
     {
-      for (int j = 0; j < matrixA[0].Length; j++)
+      for (int j = 0; j < matrixA.Width; j++)
       {
-        product += matrixA[i][j] * matrixB[i][j];
+        product += matrixA.ReadValue(i, j) * matrixB.ReadValue(i, j);
       }
     }
 
@@ -20,7 +20,7 @@ internal static class Evaluate
   // Here, we're just forcing algorithm to classify to left and right of x=0
   const int CorrectAnswerScore = 1;
   const int IncorrectAnswerScore = -1;
-  public static int Fitness(in int[][] matrixA, in int[][] matrixB, in bool isImageWithFeature)
+  public static int Fitness(in Image.Matrix matrixA, in Image.Matrix matrixB, in bool isImageWithFeature)
   {
     int customMatrixProduct = CustomMatrixProduct(matrixA, matrixB);
     if (customMatrixProduct >= 0 && isImageWithFeature) { return CorrectAnswerScore; }

@@ -1,7 +1,7 @@
 ﻿using Neptunite.Configuration;
 
 namespace Neptunite.Generate;
-internal record class Pop(int[] T1Chromosome, int[] T2Chromosome, sbyte[][][] ConvolutionChromosome);
+internal record class Pop(int[] T1Chromosome, int[] T2Chromosome, Image.Matrix[] ConvolutionChromosome);
 internal static class Population
 {
   public static Pop[] GenerateInitialPopulation(in ParameterSchema parameter)

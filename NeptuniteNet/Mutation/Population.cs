@@ -12,7 +12,7 @@ internal static class Population
       // Copy primitive structs =>> ensures deep copy
       int[] t1Chromosome = parents[i].T1Chromosome;
       int[] t2Chromosome = parents[i].T2Chromosome;
-      sbyte[][][] convolutionChromosome = parents[i].ConvolutionChromosome;
+      Image.Matrix[] convolutionChromosome = parents[i].ConvolutionChromosome;
 
       // Mutate
       Chromosome.MutateTypeOneChromosomeInplace(ref t1Chromosome, in parameter);

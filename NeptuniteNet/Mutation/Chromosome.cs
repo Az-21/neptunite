@@ -28,7 +28,7 @@ internal static partial class Chromosome
   const int MaxMaskValue = 5;
   public static sbyte GenerateRandomMaskElement() => (sbyte)Random.Shared.Next(MinMaskValue, MaxMaskValue);
 
-  public static void MutateConvolutionChromosomeInplace(ref sbyte[][][] convolutionChromosome, in ParameterSchema parameter)
+  public static void MutateConvolutionChromosomeInplace(ref Image.Matrix[] convolutionChromosome, in ParameterSchema parameter)
   {
     for (int i = 0; i < parameter.ConvolutionMatrixMutations; i++)
     {
@@ -36,7 +36,7 @@ internal static partial class Chromosome
       int y = Random.Shared.Next(parameter.ConvolutionMatrixDimension - 1);
       int z = Random.Shared.Next(parameter.ConvolutionMatrixDimension - 1);
 
-      convolutionChromosome[x][y][z] = GenerateRandomMaskElement();
+      convolutionChromosome[x].Modify(GenerateRandomMaskElement(), y, z);
     }
   }
 }

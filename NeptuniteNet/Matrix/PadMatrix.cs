@@ -1,33 +1,33 @@
 ﻿namespace Neptunite.Matrix;
 internal static class PadMatrix
 {
-  public static byte[][] WithZeros(in byte[][] matrix)
+  public static Image.Matrix WithZeros(in Image.Matrix matrix)
   {
-    byte[][] paddedMatrix = new byte[matrix.Length][];
-    int height = matrix.Length;
-    int width = matrix[0].Length;
+    int[][] paddedMatrix = new int[matrix.Height][];
+    int height = matrix.Height;
+    int width = matrix.Width;
     for (int i = 0; i < height; i++)
     {
-      byte[] row;
+      int[] row;
       if (i == 0 || i == height - 1) { row = ConstructArrayWithZeros(width + 2); }
-      else { row = PadArrayWithZeros(matrix[i]); }
+      else { row = PadArrayWithZeros(matrix.ReadRow(i)); }
       paddedMatrix[i] = row;
     }
 
-    return paddedMatrix;
+    return new Image.Matrix(paddedMatrix);
   }
 
-  private static byte[] ConstructArrayWithZeros(in int length)
+  private static int[] ConstructArrayWithZeros(in int length)
   {
-    byte[] array = new byte[length];
+    int[] array = new int[length];
     for (int i = 0; i < length; i++) { array[i] = 0; }
     return array;
   }
 
-  private static byte[] PadArrayWithZeros(in byte[] array)
+  private static int[] PadArrayWithZeros(in int[] array)
   {
     int length = array.Length;
-    byte[] paddedArray = new byte[length + 2];
+    int[] paddedArray = new int[length + 2];
 
     paddedArray[0] = 0;
     paddedArray[length - 1] = 0;

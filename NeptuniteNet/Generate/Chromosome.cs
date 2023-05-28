@@ -30,7 +30,7 @@ internal static partial class Chromosome
 
 internal static partial class Chromosome
 {
-  public static sbyte[][] RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
+  private static sbyte[][] RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
   {
     byte dimension = parameter.ConvolutionMatrixDimension;
     sbyte[][] matrix = Matrix.SquareMatrix.Create(dimension);
@@ -46,5 +46,14 @@ internal static partial class Chromosome
   }
 
   const int ConvolutionChromosomeLength = 5;
+  public static sbyte[][][] RandomlyGenerateConvolutionChromosome(in ParameterSchema parameter)
+  {
+    sbyte[][][] chromosome = new sbyte[ConvolutionChromosomeLength][][];
+    for (int i = 0; i < ConvolutionChromosomeLength; i++)
+    {
+      chromosome[i] = RandomlyGenerateConvolutionMask(in parameter);
+    }
 
+    return chromosome;
+  }
 }

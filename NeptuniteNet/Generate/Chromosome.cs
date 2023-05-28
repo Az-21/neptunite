@@ -32,14 +32,14 @@ internal static partial class Chromosome
     {
       for (int j = 0; j < dimension; j++)
       {
-        matrix[i][j] = Mutation.Matrix.GenerateRandomMaskElement();
+        matrix[i][j] = Mutation.Chromosome.GenerateRandomMaskElement();
       }
     }
 
     return matrix;
   }
 
-  const int ConvolutionChromosomeLength = 5;
+  public const int ConvolutionChromosomeLength = 5;
   public static sbyte[][][] RandomlyGenerateConvolutionChromosome(in ParameterSchema parameter)
   {
     sbyte[][][] chromosome = new sbyte[ConvolutionChromosomeLength][][];

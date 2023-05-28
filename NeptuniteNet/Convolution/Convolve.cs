@@ -1,11 +1,11 @@
 ﻿namespace Neptunite.Convolution;
 internal static class Convolve
 {
-  private static byte CalculateIndexOffset(in Image.Matrix matrix) =>
+  private static int CalculateIndexOffset(in Image.Matrix matrix) =>
     // For a 1x1 matrix, offset is 0
     // For a 3x3 matrix, offset is 1
     // For a 5x5 matrix, offset is 2
-    (byte)(matrix.Height / 2);
+    (matrix.Height - 1) / 2;
 
   public static Image.Matrix TwoMatrices(in Image.Matrix matrix, in Image.Matrix mask)
   {

@@ -7,7 +7,7 @@ internal static class Convolve
     // For a 5x5 matrix, offset is 2
     (byte)((matrix.Length / 2) + 1);
 
-  private static int[][] TwoMatrices(in byte[][] matrix, in sbyte[][] mask)
+  public static int[][] TwoMatrices(in byte[][] matrix, in sbyte[][] mask)
   {
     byte[][] paddedMatrix = Matrix.PadMatrix.WithZeros(in matrix);
 

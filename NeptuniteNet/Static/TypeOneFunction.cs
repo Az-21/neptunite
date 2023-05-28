@@ -30,10 +30,8 @@ internal static class TypeOneFunction
   private static readonly Func<int, int> Tan = (x) => (int)Math.Tan(x); // Angle is in degree
   private static void TanInplace(ref int[][] matrix) => Apply(ref matrix, Tan);
 
-  public enum TypeOneOperation
-  {
-    LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan,
-  }
+  public enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, }
+  public static readonly int t1Count = Enum.GetNames(typeof(TypeOneOperation)).Length;
 
   public static void ApplyTypeOneOperationInplace(ref int[][] matrix, in TypeOneOperation operation)
   {

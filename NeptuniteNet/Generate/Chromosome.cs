@@ -14,18 +14,12 @@ internal static partial class Chromosome
   }
 
   const int TypeOneFunctionChromosomeLength = 5;
-  public static int[] RandomlyGenerateTypeOneChromosome()
-  {
-    int enumCount = Enum.GetNames(typeof(TypeOneOperation)).Length;
-    return FillChromosomeWithRandomIntegers(TypeOneFunctionChromosomeLength, enumCount);
-  }
+  public static int[] RandomlyGenerateTypeOneChromosome() =>
+    FillChromosomeWithRandomIntegers(TypeOneFunctionChromosomeLength, t1Count);
 
   const int TypeTwoFunctionChromosomeLength = 9;
-  public static int[] RandomlyGenerateTypeTwoChromosome()
-  {
-    int enumCount = Enum.GetNames(typeof(TypeTwoOperation)).Length;
-    return FillChromosomeWithRandomIntegers(TypeTwoFunctionChromosomeLength, enumCount);
-  }
+  public static int[] RandomlyGenerateTypeTwoChromosome() =>
+    FillChromosomeWithRandomIntegers(TypeTwoFunctionChromosomeLength, t2Count);
 }
 
 internal static partial class Chromosome

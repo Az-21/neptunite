@@ -34,10 +34,8 @@ internal static class TypeTwoFunction
   private static readonly Func<int, int, int> _Divide = (a, b) => (int)(a / _PreventZeroDivision(b));
   private static int[][] Divide(in int[][] A, in int[][] B) => Apply(in A, in B, _Divide);
 
-  public enum TypeTwoOperation
-  {
-    Add, Subtract, Multiply, Divide,
-  }
+  public enum TypeTwoOperation { Add, Subtract, Multiply, Divide, }
+  public static readonly int t2Count = Enum.GetNames(typeof(TypeTwoOperation)).Length;
 
   public static int[][] ApplyTypeOneOperationInplace(in int[][] matrixA, in int[][] matrixB, in TypeTwoOperation operation) =>
     operation switch

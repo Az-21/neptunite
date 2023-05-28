@@ -29,4 +29,9 @@ internal static class TypeOneFunction
 
   private static readonly Func<int, int> Tan = (x) => (int)Math.Tan(x); // Angle is in degree
   public static void TanInplace(ref int[][] matrix) => Apply(ref matrix, Tan);
+
+  public enum TypeOneNode
+  {
+    LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan,
+  }
 }

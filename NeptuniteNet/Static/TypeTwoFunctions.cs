@@ -35,4 +35,9 @@ internal static class TypeTwoFunctions
   private static readonly Func<int, int, int> _Divide = (a, b) => (int)(a / _PreventZeroDivision(b));
   public static void Divide(in int[][] matrixA, in int[][] matrixB) =>
     Apply(in matrixA, in matrixB, _Divide);
+
+  public enum TypeTwoNode
+  {
+    Add, Subtract, Multiply, Divide,
+  }
 }

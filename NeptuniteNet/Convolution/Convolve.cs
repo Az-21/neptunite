@@ -51,36 +51,35 @@ internal static class Convolve
 
   public static Image.Matrix PadMatrixWithZeros(in Image.Matrix matrix)
   {
-    int[][] paddedMatrix = new int[matrix.Height][];
-    int height = matrix.Height;
-    int width = matrix.Width;
-    for (int i = 0; i < height; i++)
+    int rows = matrix.Height;
+    int cols = matrix.Width;
+
+    // Calculate the new dimensions for the padded matrix
+    int paddedRows = rows + 2;
+    int paddedCols = cols + 2;
+
+    // Create the padded matrix
+    int[][] paddedMatrix = new int[paddedRows][];
+
+    // Fill the padded matrix with zeros
+    for (int i = 0; i < paddedRows; i++)
     {
-      int[] row;
-      if (i == 0 || i == height - 1) { row = ConstructArrayWithZeros(width + 2); }
-      else { row = PadArrayWithZeros(matrix.ReadRow(i)); }
-      paddedMatrix[i] = row;
+      paddedMatrix[i] = new int[paddedCols];
+      for (int j = 0; j < paddedCols; j++)
+      {
+        paddedMatrix[i][j] = 0;
+      }
+    }
+
+    // Copy the original matrix values to the padded matrix
+    for (int i = 0; i < rows; i++)
+    {
+      for (int j = 0; j < cols; j++)
+      {
+        paddedMatrix[i + 1][j + 1] = matrix.ReadValue(i, j);
+      }
     }
 
     return new Image.Matrix(paddedMatrix);
-  }
-
-  private static int[] ConstructArrayWithZeros(in int length)
-  {
-    int[] array = new int[length];
-    for (int i = 0; i < length; i++) { array[i] = 0; }
-    return array;
-  }
-
-  private static int[] PadArrayWithZeros(in int[] array)
-  {
-    int length = array.Length;
-    int[] paddedArray = new int[length + 2];
-
-    paddedArray[0] = 0;
-    paddedArray[length - 1] = 0;
-    for (int i = 1; i < length + 1; i++) { paddedArray[i] = array[i - 1]; }
-
-    return paddedArray;
   }
 }

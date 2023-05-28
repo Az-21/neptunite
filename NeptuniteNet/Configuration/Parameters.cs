@@ -7,6 +7,7 @@ public readonly record struct ParameterSchema(
   ushort IterationLimit,
   byte PopulationSize,
   double MutationThreshold, // Higher threshold will produce fewer mutations
+  int ConvolutionMatrixMutations, // Exact number of mask elements which will get mutated
   string DatasetWithFeature,
   string DatasetWithoutFeature,
   byte ConvolutionMatrixDimension
@@ -43,7 +44,8 @@ internal static class Parameters
         .AddRow("Iteration limit", parameter.IterationLimit.ToString())
         .AddRow("Population size", parameter.PopulationSize.ToString())
         .AddRow("Convolution matrix dimension", convolutionMatrixDimension)
-        .AddRow("Mutation threshold", parameter.MutationThreshold.ToString())
+        .AddRow("Number of convolution matrix mutations", parameter.ConvolutionMatrixMutations.ToString())
+        .AddRow("Mutation threshold (for T1 and T2 operations)", parameter.MutationThreshold.ToString())
         .AddRow("Path of training dataset with feature", parameter.DatasetWithFeature)
         .AddRow("Path of training dataset without feature", parameter.DatasetWithoutFeature)
       );

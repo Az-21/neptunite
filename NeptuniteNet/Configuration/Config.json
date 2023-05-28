@@ -5,4 +5,5 @@
   "DatasetWithFeature": "C:\\Dev\\Dataset\\True",
   "DatasetWithoutFeature": "C:\\Dev\\Dataset\\False",
   "ConvolutionMatrixDimension": 3,
+  "ConvolutionMatrixMutations": 2,
 }

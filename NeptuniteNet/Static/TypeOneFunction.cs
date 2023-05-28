@@ -33,16 +33,16 @@ internal static class TypeOneFunction
   public enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, }
   public static readonly int t1Count = Enum.GetNames(typeof(TypeOneOperation)).Length;
 
-  public static void ApplyTypeOneOperationInplace(ref int[][] matrix, in TypeOneOperation operation)
+  public static void ApplyTypeOneOperationInplace(ref int[][] matrix, in int operation)
   {
     switch (operation)
     {
-      case TypeOneOperation.LogBase10: LogBase10Inplace(ref matrix); break;
-      case TypeOneOperation.LogBase2: LogBase2Inplace(ref matrix); break;
-      case TypeOneOperation.NaturalLog: NaturalLogInplace(ref matrix); break;
-      case TypeOneOperation.Sin: SinInplace(ref matrix); break;
-      case TypeOneOperation.Cos: CosInplace(ref matrix); break;
-      case TypeOneOperation.Tan: TanInplace(ref matrix); break;
+      case (int)TypeOneOperation.LogBase10: LogBase10Inplace(ref matrix); break;
+      case (int)TypeOneOperation.LogBase2: LogBase2Inplace(ref matrix); break;
+      case (int)TypeOneOperation.NaturalLog: NaturalLogInplace(ref matrix); break;
+      case (int)TypeOneOperation.Sin: SinInplace(ref matrix); break;
+      case (int)TypeOneOperation.Cos: CosInplace(ref matrix); break;
+      case (int)TypeOneOperation.Tan: TanInplace(ref matrix); break;
       default: throw new NotImplementedException();
     }
   }

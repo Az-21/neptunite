@@ -37,13 +37,13 @@ internal static class TypeTwoFunction
   public enum TypeTwoOperation { Add, Subtract, Multiply, Divide, }
   public static readonly int t2Count = Enum.GetNames(typeof(TypeTwoOperation)).Length;
 
-  public static int[][] ApplyTypeOneOperationInplace(in int[][] matrixA, in int[][] matrixB, in TypeTwoOperation operation) =>
+  public static int[][] ApplyTypeOneOperationInplace(in int[][] matrixA, in int[][] matrixB, in int operation) =>
     operation switch
     {
-      TypeTwoOperation.Add => Add(matrixA, matrixB),
-      TypeTwoOperation.Subtract => Subtract(matrixA, matrixB),
-      TypeTwoOperation.Multiply => Multiply(matrixA, matrixB),
-      TypeTwoOperation.Divide => Divide(matrixA, matrixB),
+      (int)TypeTwoOperation.Add => Add(matrixA, matrixB),
+      (int)TypeTwoOperation.Subtract => Subtract(matrixA, matrixB),
+      (int)TypeTwoOperation.Multiply => Multiply(matrixA, matrixB),
+      (int)TypeTwoOperation.Divide => Divide(matrixA, matrixB),
       _ => throw new NotImplementedException(),
     };
 }

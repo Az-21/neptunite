@@ -1,6 +1,7 @@
 ﻿using Neptunite.Convolution;
 using Neptunite.Fitness;
 using Neptunite.Generate;
+using Neptunite.Image;
 using Neptunite.Static;
 
 namespace Neptunite.Tree;
@@ -86,14 +87,24 @@ internal static class Structure
     return fitness;
   }
 
-  public static int[] RunGenetricProgramming(in Pop[] population, in List<byte[][]> images)
+  public static int[] EvaluatePopulation(in Pop[] population, in Images images)
   {
     int popSize = population.Length;
     int[] fitness = new int[popSize];
 
-    for (int i = 0; i < images.Count; i++)
+    bool isImageWithFeature = true;
+    for (int i = 0; i < images.WithFeature.Count; i++)
     {
-      int[] singleImageFitness = ApplyPopulationOnImage(in population, images[i]);
+      byte[][] image = Parse.AsGrayscaleImageMatrix(images.WithFeature[i]);
+      int[] singleImageFitness = ApplyPopulationOnImage(in population, in image);
+      for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
+    }
+
+    isImageWithFeature = false;
+    for (int i = 0; i < images.WithoutFeature.Count; i++)
+    {
+      byte[][] image = Parse.AsGrayscaleImageMatrix(images.WithoutFeature[i]);
+      int[] singleImageFitness = ApplyPopulationOnImage(in population, in image);
       for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
     }
 

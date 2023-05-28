@@ -2,7 +2,7 @@
 internal static class TypeTwoFunctions
 {
   // MatrixA and MatrixB are two instances of the same image =>> Guaranteed to be same dimension
-  private static void Apply(in int[][] matrixA, in int[][] matrixB, in Func<int, int, int> function)
+  private static int[][] Apply(in int[][] matrixA, in int[][] matrixB, in Func<int, int, int> function)
   {
     int height = matrixA.Length;
     int width = matrixA[0].Length;
@@ -17,26 +17,24 @@ internal static class TypeTwoFunctions
       }
       output[i] = row;
     }
+
+    return output;
   }
 
   private static readonly Func<int, int, int> _Add = (a, b) => (int)(a + b);
-  public static void Add(in int[][] matrixA, in int[][] matrixB) =>
-    Apply(in matrixA, in matrixB, _Add);
+  private static int[][] Add(in int[][] A, in int[][] B) => Apply(in A, in B, _Add);
 
   private static readonly Func<int, int, int> _Subtract = (a, b) => (int)(a - b);
-  public static void Subtract(in int[][] matrixA, in int[][] matrixB) =>
-    Apply(in matrixA, in matrixB, _Subtract);
+  private static int[][] Subtract(in int[][] A, in int[][] B) => Apply(in A, in B, _Subtract);
 
   private static readonly Func<int, int, int> _Multiply = (a, b) => (int)(a * b);
-  public static void Multiply(in int[][] matrixA, in int[][] matrixB) =>
-    Apply(in matrixA, in matrixB, _Multiply);
+  private static int[][] Multiply(in int[][] A, in int[][] B) => Apply(in A, in B, _Multiply);
 
   private static readonly Func<int, int> _PreventZeroDivision = (int x) => (int)(x == 0 ? 1 : x);
   private static readonly Func<int, int, int> _Divide = (a, b) => (int)(a / _PreventZeroDivision(b));
-  public static void Divide(in int[][] matrixA, in int[][] matrixB) =>
-    Apply(in matrixA, in matrixB, _Divide);
+  private static int[][] Divide(in int[][] A, in int[][] B) => Apply(in A, in B, _Divide);
 
-  public enum TypeTwoNode
+  public enum TypeTwoOperation
   {
     Add, Subtract, Multiply, Divide,
   }

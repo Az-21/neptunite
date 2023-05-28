@@ -3,12 +3,8 @@ using static Neptunite.Static.TypeOneFunction;
 using static Neptunite.Static.TypeTwoFunction;
 
 namespace Neptunite.Generate;
-internal static class Chromosome
+internal static partial class Chromosome
 {
-  // NOTE: See Tree/Structure.cs for placeholders. Items are arranged in BFS manner.
-  const int TypeOneFunctionChromosomeLength = 5;
-  const int TypeTwoFunctionChromosomeLength = 9;
-
   // Generate chromosome of fixed length. Fill values with T1F and T2F enums.
   private static int[] FillChromosomeWithRandomIntegers(in int length, in int enumCount)
   {
@@ -17,18 +13,23 @@ internal static class Chromosome
     return chromosome;
   }
 
+  const int TypeOneFunctionChromosomeLength = 5;
   public static int[] RandomlyGenerateTypeOneChromosome()
   {
     int enumCount = Enum.GetNames(typeof(TypeOneOperation)).Length;
-    return FillChromosomeWithRandomIntegers(0, enumCount);
+    return FillChromosomeWithRandomIntegers(TypeOneFunctionChromosomeLength, enumCount);
   }
 
+  const int TypeTwoFunctionChromosomeLength = 9;
   public static int[] RandomlyGenerateTypeTwoChromosome()
   {
     int enumCount = Enum.GetNames(typeof(TypeTwoOperation)).Length;
-    return FillChromosomeWithRandomIntegers(0, enumCount);
+    return FillChromosomeWithRandomIntegers(TypeTwoFunctionChromosomeLength, enumCount);
   }
+}
 
+internal static partial class Chromosome
+{
   public static sbyte[][] RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
   {
     byte dimension = parameter.ConvolutionMatrixDimension;
@@ -43,4 +44,7 @@ internal static class Chromosome
 
     return matrix;
   }
+
+  const int ConvolutionChromosomeLength = 5;
+
 }

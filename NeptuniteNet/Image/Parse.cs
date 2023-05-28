@@ -4,7 +4,7 @@ namespace Neptunite.Image;
 
 internal static class Parse
 {
-  private static byte[][] AsGrayscaleImageMatrix(in string imagePath)
+  public static byte[][] AsGrayscaleImageMatrix(in string imagePath)
   {
     SKBitmap image = SKBitmap.Decode(imagePath);
     int width = image.Width;

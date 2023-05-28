@@ -23,6 +23,7 @@ internal static class Program
     for (int i = 0; i < parameter.IterationLimit; i++)
     {
       int[] fitness = Structure.EvaluatePopulation(in population, in images);
+      Console.WriteLine($"Generation {i} evaluated");
 
       // TODO
       // - Linked sort

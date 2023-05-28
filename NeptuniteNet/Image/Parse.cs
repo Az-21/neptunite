@@ -1,4 +1,5 @@
 ﻿using SkiaSharp;
+using Spectre.Console;
 
 namespace Neptunite.Image;
 
@@ -6,6 +7,8 @@ internal static class Parse
 {
   public static Image.Matrix AsGrayscaleImageMatrix(in string imagePath)
   {
+    AnsiConsole.MarkupLine($"Evaluating population against [blue]{imagePath}[/]");
+
     SKBitmap image = SKBitmap.Decode(imagePath);
     int width = image.Width;
     int height = image.Height;

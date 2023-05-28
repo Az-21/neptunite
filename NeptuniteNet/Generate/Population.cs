@@ -6,8 +6,11 @@ internal static class Population
 {
   public static Pop[] GenerateInitialPopulation(in ParameterSchema parameter)
   {
-    Pop[] initialPopulation = new Pop[parameter.PopulationSize];
-    for (int i = 0; i < parameter.PopulationSize; i++)
+    // Start with 2x pops so that 0th iteration of GP works correctly
+    int initialPop = 2 * parameter.PopulationSize;
+
+    Pop[] initialPopulation = new Pop[initialPop];
+    for (int i = 0; i < initialPop; i++)
     {
       initialPopulation[i] = new Pop(
         Chromosome.RandomlyGenerateTypeOneChromosome(),

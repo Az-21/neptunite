@@ -38,4 +38,14 @@ internal static class TypeTwoFunctions
   {
     Add, Subtract, Multiply, Divide,
   }
+
+  public static int[][] ApplyTypeOneOperationInplace(in int[][] matrixA, in int[][] matrixB, in TypeTwoOperation operation) =>
+    operation switch
+    {
+      TypeTwoOperation.Add => Add(matrixA, matrixB),
+      TypeTwoOperation.Subtract => Subtract(matrixA, matrixB),
+      TypeTwoOperation.Multiply => Multiply(matrixA, matrixB),
+      TypeTwoOperation.Divide => Divide(matrixA, matrixB),
+      _ => throw new NotImplementedException(),
+    };
 }

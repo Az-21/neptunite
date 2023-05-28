@@ -23,8 +23,7 @@ internal static class Load
 
   private static void ProcessFolder(string folderPath, ref List<string> imageFiles)
   {
-    string[] fileEntries = Directory.GetFiles(folderPath, "*.*");
-    foreach (string filePath in fileEntries)
+    foreach (string filePath in Directory.GetFiles(folderPath, "*.*"))
     {
       string extension = Path.GetExtension(filePath);
       if (extension is null) { continue; }
@@ -35,8 +34,10 @@ internal static class Load
     }
 
     // Recursively crawl through sub-directories
-    string[] subdirectories = Directory.GetDirectories(folderPath);
-    foreach (string subdirectory in subdirectories) { ProcessFolder(subdirectory, ref imageFiles); }
+    foreach (string subdirectory in Directory.GetDirectories(folderPath))
+    {
+      ProcessFolder(subdirectory, ref imageFiles);
+    }
   }
 
   public static void PrintImagesCount(in Images images)

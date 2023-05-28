@@ -14,4 +14,19 @@ internal static class TypeOneFunction
 
   static readonly Func<int, int> LogBase10 = (x) => (int)Math.Log10(x);
   public static void LogBase10Inplace(ref int[][] matrix) => Apply(ref matrix, LogBase10);
+
+  static readonly Func<int, int> LogBase2 = (x) => (int)Math.Log2(x);
+  public static void LogBase2Inplace(ref int[][] matrix) => Apply(ref matrix, LogBase2);
+
+  static readonly Func<int, int> NaturalLog = (x) => (int)Math.Log(x);
+  public static void NaturalLogInplace(ref int[][] matrix) => Apply(ref matrix, NaturalLog);
+
+  static readonly Func<int, int> Sin = (x) => (int)Math.Sin(x); // Angle is in degree
+  public static void SinInplace(ref int[][] matrix) => Apply(ref matrix, Sin);
+
+  static readonly Func<int, int> Cos = (x) => (int)Math.Cos(x); // Angle is in degree
+  public static void CosInplace(ref int[][] matrix) => Apply(ref matrix, Cos);
+
+  static readonly Func<int, int> Tan = (x) => (int)Math.Tan(x); // Angle is in degree
+  public static void TanInplace(ref int[][] matrix) => Apply(ref matrix, Tan);
 }

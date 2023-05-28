@@ -13,13 +13,13 @@ internal static partial class Chromosome
     return chromosome;
   }
 
-  const int TypeOneFunctionChromosomeLength = 5;
+  public const int TypeOneChromosomeLength = 5;
   public static int[] RandomlyGenerateTypeOneChromosome() =>
-    FillChromosomeWithRandomIntegers(TypeOneFunctionChromosomeLength, t1Count);
+    FillChromosomeWithRandomIntegers(TypeOneChromosomeLength, t1Count);
 
-  const int TypeTwoFunctionChromosomeLength = 9;
+  public const int TypeTwoChromosomeLength = 9;
   public static int[] RandomlyGenerateTypeTwoChromosome() =>
-    FillChromosomeWithRandomIntegers(TypeTwoFunctionChromosomeLength, t2Count);
+    FillChromosomeWithRandomIntegers(TypeTwoChromosomeLength, t2Count);
 }
 
 internal static partial class Chromosome

@@ -1,5 +1,5 @@
 ﻿namespace Neptunite.Static;
-internal static class TypeTwoFunctions
+internal static class TypeTwoFunction
 {
   // MatrixA and MatrixB are two instances of the same image =>> Guaranteed to be same dimension
   private static int[][] Apply(in int[][] matrixA, in int[][] matrixB, in Func<int, int, int> function)

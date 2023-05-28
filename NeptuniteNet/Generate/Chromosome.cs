@@ -27,12 +27,13 @@ internal static partial class Chromosome
   private static sbyte[][] RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
   {
     byte dimension = parameter.ConvolutionMatrixDimension;
-    sbyte[][] matrix = Matrix.SquareMatrix.Create(dimension);
+    sbyte[][] matrix = new sbyte[dimension][];
     for (int i = 0; i < dimension; i++)
     {
+      sbyte[] row = new sbyte[dimension];
       for (int j = 0; j < dimension; j++)
       {
-        matrix[i][j] = Mutation.Chromosome.GenerateRandomMaskElement();
+        row[j] = Mutation.Chromosome.GenerateRandomMaskElement();
       }
     }
 

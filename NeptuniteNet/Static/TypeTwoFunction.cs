@@ -30,12 +30,7 @@ internal static class TypeTwoFunction
   private static Image.Matrix Multiply(in Image.Matrix A, in Image.Matrix B) =>
     Apply(in A, in B, _Multiply);
 
-  private static readonly Func<int, int> _PreventZeroDivision = (int x) => (int)(x == 0 ? 1 : x);
-  private static readonly Func<int, int, int> _Divide = (a, b) => (int)(a / _PreventZeroDivision(b));
-  private static Image.Matrix Divide(in Image.Matrix A, in Image.Matrix B) =>
-    Apply(in A, in B, _Divide);
-
-  public enum TypeTwoOperation { Add, Subtract, Multiply, Divide, }
+  public enum TypeTwoOperation { Add, Subtract, Multiply, }
   public static readonly int t2Count = Enum.GetNames(typeof(TypeTwoOperation)).Length;
 
   public static Image.Matrix ApplyTypeOneOperationInplace(in Image.Matrix matrixA, in Image.Matrix matrixB, in int operation) =>
@@ -44,7 +39,6 @@ internal static class TypeTwoFunction
       (int)TypeTwoOperation.Add => Add(matrixA, matrixB),
       (int)TypeTwoOperation.Subtract => Subtract(matrixA, matrixB),
       (int)TypeTwoOperation.Multiply => Multiply(matrixA, matrixB),
-      (int)TypeTwoOperation.Divide => Divide(matrixA, matrixB),
       _ => throw new NotImplementedException(),
     };
 }

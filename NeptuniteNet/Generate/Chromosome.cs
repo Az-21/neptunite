@@ -1,4 +1,5 @@
-﻿using static Neptunite.Static.TypeOneFunction;
+﻿using Neptunite.Configuration;
+using static Neptunite.Static.TypeOneFunction;
 using static Neptunite.Static.TypeTwoFunction;
 
 namespace Neptunite.Generate;
@@ -26,5 +27,20 @@ internal static class Chromosome
   {
     int enumCount = Enum.GetNames(typeof(TypeTwoOperation)).Length;
     return FillChromosomeWithRandomIntegers(0, enumCount);
+  }
+
+  public static sbyte[][] RandomlyGenerateConvolutionMask(in ParameterSchema parameter)
+  {
+    byte dimension = parameter.ConvolutionMatrixDimension;
+    sbyte[][] matrix = Matrix.SquareMatrix.Create(dimension);
+    for (int i = 0; i < dimension; i++)
+    {
+      for (int j = 0; j < dimension; j++)
+      {
+        matrix[i][j] = Mutation.Matrix.GenerateRandomMaskElement();
+      }
+    }
+
+    return matrix;
   }
 }

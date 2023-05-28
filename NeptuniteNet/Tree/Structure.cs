@@ -96,7 +96,7 @@ internal static class Structure
     {
       Image.Matrix image = Parse.AsGrayscaleImageMatrix(images.WithFeature[i]);
       int[] singleImageFitness = ApplyPopulationOnImage(in population, in image, in isImageWithFeature);
-      for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
+      for (int j = 0; j < singleImageFitness.Length; j++) { fitness[j] += singleImageFitness[j]; }
     }
 
     isImageWithFeature = false;
@@ -104,7 +104,7 @@ internal static class Structure
     {
       Image.Matrix image = Parse.AsGrayscaleImageMatrix(images.WithoutFeature[i]);
       int[] singleImageFitness = ApplyPopulationOnImage(in population, in image, in isImageWithFeature);
-      for (int j = 0; j < singleImageFitness.Length; j++) { fitness[i] += singleImageFitness[i]; }
+      for (int j = 0; j < singleImageFitness.Length; j++) { fitness[j] += singleImageFitness[j]; }
     }
 
     return fitness;

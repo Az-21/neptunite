@@ -26,7 +26,7 @@ internal static partial class Chromosome
 {
   const int MinMaskValue = -5;
   const int MaxMaskValue = 5;
-  public static void MutateConvolutionChromosome(ref sbyte[][][] convolutionChromosome, in ParameterSchema parameter)
+  public static void MutateConvolutionChromosomeInplace(ref sbyte[][][] convolutionChromosome, in ParameterSchema parameter)
   {
     for (int layer = 0; layer < Generate.Chromosome.ConvolutionChromosomeLength; layer++)
     {

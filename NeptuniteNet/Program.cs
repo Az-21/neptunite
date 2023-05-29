@@ -30,11 +30,11 @@ internal static class Program
       AnsiConsole.Write(new Rule($"Evaluating Generation [green]{i + 1}[/]").LeftJustified());
       int[] fitness = Structure.EvaluatePopulation(population, in images);
 
+      // Linked descending sort according to fitness (higher is better)
       Array.Sort(fitness, population, Comparer<int>.Create((a, b) => b.CompareTo(a)));
-      // TODO
-      // - Linked sort
-      // - Eliminate bottom half
-      // - Mutate and append top half
+
+      // - Eliminate bottom half by replacing them by mutating top half
+      Mutation.Population.MutateTopFiftyAndReplaceBottomFiftyInplace(ref population, in parameter);
     }
 
     // TODO: Output final iteration chromosome

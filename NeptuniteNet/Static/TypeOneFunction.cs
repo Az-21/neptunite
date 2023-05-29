@@ -31,7 +31,10 @@ internal static class TypeOneFunction
   private static readonly Func<int, int> Tan = (x) => (int)Math.Tan(x); // Angle is in degree
   private static void TanInplace(ref Image.Matrix matrix) => Apply(ref matrix, Tan);
 
-  public enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, }
+  private static readonly Func<int, int> Negate = (x) => -1 * x;
+  private static void NegateInplace(ref Image.Matrix matrix) => Apply(ref matrix, Negate);
+
+  public enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, Negate, }
   public static readonly int t1Count = Enum.GetNames(typeof(TypeOneOperation)).Length;
 
   public static void ApplyTypeOneOperationInplace(ref Image.Matrix matrix, in int operation)
@@ -44,6 +47,7 @@ internal static class TypeOneFunction
       case (int)TypeOneOperation.Sin: SinInplace(ref matrix); break;
       case (int)TypeOneOperation.Cos: CosInplace(ref matrix); break;
       case (int)TypeOneOperation.Tan: TanInplace(ref matrix); break;
+      case (int)TypeOneOperation.Negate: NegateInplace(ref matrix); break;
       default: throw new NotImplementedException();
     }
   }

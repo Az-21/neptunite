@@ -30,6 +30,7 @@ internal static class Program
       AnsiConsole.Write(new Rule($"Evaluating Generation [green]{i + 1}[/]").LeftJustified());
       int[] fitness = Structure.EvaluatePopulation(population, in images);
 
+      Array.Sort(fitness, population, Comparer<int>.Create((a, b) => b.CompareTo(a)));
       // TODO
       // - Linked sort
       // - Eliminate bottom half

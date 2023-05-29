@@ -32,11 +32,12 @@ internal static class Program
 
       // Linked descending sort according to fitness (higher is better)
       Array.Sort(fitness, population, Comparer<int>.Create((a, b) => b.CompareTo(a)));
+      AnsiConsole.MarkupLine($"\nFittest chromosome in generation [green]{i + 1}[/]: f(c) = [blue1]{fitness[0]}[/]");
+      AnsiConsole.MarkupLine($"Weakest chromosome in generation [green]{i + 1}[/]: f(c) = [rosybrown]{fitness[^1]}[/]");
 
       // - Eliminate bottom half by replacing them by mutating top half
       Mutation.Population.MutateTopFiftyAndReplaceBottomFiftyInplace(ref population, in parameter);
     }
 
-    // TODO: Output final iteration chromosome
   }
 }

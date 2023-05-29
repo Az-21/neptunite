@@ -7,7 +7,7 @@ using Spectre.Console;
 namespace Neptunite;
 internal static class Program
 {
-  static void Main()
+  private static void Main()
   {
     AnsiConsole.Write(new FigletText("Neptunite").Color(Color.Purple_2));
     Console.WriteLine();
@@ -37,6 +37,6 @@ internal static class Program
       // - Mutate and append top half
     }
 
-    // TODO: Output final interation chromosome
+    // TODO: Output final iteration chromosome
   }
 }

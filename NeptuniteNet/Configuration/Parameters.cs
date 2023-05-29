@@ -18,8 +18,8 @@ internal static class Parameters
   // Read "Config.json" file
   private static String ReadRawParameters()
   {
-    String relative = Directory.GetCurrentDirectory();
-    String path = Path.Combine(relative, "Configuration", "Config.json");
+    string relative = Directory.GetCurrentDirectory();
+    string path = Path.Combine(relative, "Configuration", "Config.json");
     return File.ReadAllText(path);
   }
 

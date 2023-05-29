@@ -3,7 +3,7 @@ internal class Matrix
 {
   public int Height { get; }
   public int Width { get; }
-  public int[][] Data { get; set; }
+  private int[][] Data { get; set; }
 
   public Matrix(int[][] data)
   {

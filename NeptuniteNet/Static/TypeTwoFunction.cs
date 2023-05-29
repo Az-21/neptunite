@@ -30,8 +30,8 @@ internal static class TypeTwoFunction
   private static Image.Matrix Multiply(in Image.Matrix A, in Image.Matrix B) =>
     Apply(in A, in B, _Multiply);
 
-  public enum TypeTwoOperation { Add, Subtract, Multiply, }
-  public static readonly int t2Count = Enum.GetNames(typeof(TypeTwoOperation)).Length;
+  private enum TypeTwoOperation { Add, Subtract, Multiply, }
+  public static readonly int T2Count = Enum.GetNames(typeof(TypeTwoOperation)).Length;
 
   public static Image.Matrix ApplyTypeOneOperationInplace(in Image.Matrix matrixA, in Image.Matrix matrixB, in int operation) =>
     operation switch

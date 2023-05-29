@@ -37,8 +37,8 @@ internal static class TypeOneFunction
   private static readonly Func<int, int> Zero = (x) => 0 * x;
   private static void ZeroInplace(ref Image.Matrix matrix) => Apply(ref matrix, Zero);
 
-  public enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, Negate, Zero, }
-  public static readonly int t1Count = Enum.GetNames(typeof(TypeOneOperation)).Length;
+  private enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, Negate, Zero, }
+  public static readonly int T1Count = Enum.GetNames(typeof(TypeOneOperation)).Length;
 
   public static void ApplyTypeOneOperationInplace(ref Image.Matrix matrix, in int operation)
   {

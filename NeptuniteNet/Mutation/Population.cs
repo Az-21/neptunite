@@ -19,7 +19,7 @@ internal static class Population
       Chromosome.MutateTypeTwoChromosomeInplace(ref t2Chromosome, in parameter);
       Chromosome.MutateConvolutionChromosomeInplace(ref convolutionChromosome, in parameter);
 
-      // Constuct new object
+      // Construct new object
       children[i] = new Pop(t1Chromosome, t2Chromosome, convolutionChromosome);
     }
 

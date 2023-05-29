@@ -10,8 +10,8 @@ internal static class Parse
     AnsiConsole.MarkupLine($"Evaluating population against [blue]{imagePath}[/]");
 
     SKBitmap image = SKBitmap.Decode(imagePath);
-    /// WARN: SkiaSharp uses (x, y) coordinates from top-left of the image to locate address
-    /// So, image.Width corresponds to the rows of our matrix and image.Height corresponds to the columns
+    // WARN: SkiaSharp uses (x, y) coordinates from top-left of the image to locate address
+    // So, image.Width corresponds to the rows of our matrix and image.Height corresponds to the columns
     int height = image.Width;
     int width = image.Height;
 

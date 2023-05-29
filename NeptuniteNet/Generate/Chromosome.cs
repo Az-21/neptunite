@@ -15,11 +15,11 @@ internal static partial class Chromosome
 
   public const int TypeOneChromosomeLength = 4;
   public static int[] RandomlyGenerateTypeOneChromosome() =>
-    FillChromosomeWithRandomIntegers(TypeOneChromosomeLength, t1Count);
+    FillChromosomeWithRandomIntegers(TypeOneChromosomeLength, T1Count);
 
   public const int TypeTwoChromosomeLength = 5;
   public static int[] RandomlyGenerateTypeTwoChromosome() =>
-    FillChromosomeWithRandomIntegers(TypeTwoChromosomeLength, t2Count);
+    FillChromosomeWithRandomIntegers(TypeTwoChromosomeLength, T2Count);
 }
 
 internal static partial class Chromosome

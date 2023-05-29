@@ -27,13 +27,13 @@ internal static class Program
     for (int i = 0; i < parameter.IterationLimit; i++)
     {
       Console.WriteLine("\n\n");
-      AnsiConsole.Write(new Rule($"Evaluating Generation [green]{i + 1}[/]").LeftJustified());
+      AnsiConsole.Write(new Rule($"Evaluating Generation {i + 1}").LeftJustified().RuleStyle("green"));
       int[] fitness = Structure.EvaluatePopulation(population, in images);
 
       // Linked descending sort according to fitness (higher is better)
       Array.Sort(fitness, population, Comparer<int>.Create((a, b) => b.CompareTo(a)));
-      AnsiConsole.MarkupLine($"\nFittest chromosome in generation [green]{i + 1}[/]: f(c) = [blue1]{fitness[0]}[/]");
-      AnsiConsole.MarkupLine($"Weakest chromosome in generation [green]{i + 1}[/]: f(c) = [rosybrown]{fitness[^1]}[/]");
+      AnsiConsole.MarkupLine($"\nFittest chromosome in generation [green]{i + 1}[/]: f(c) = [navy]{fitness[0]}[/]");
+      AnsiConsole.MarkupLine($"Weakest chromosome in generation [green]{i + 1}[/]: f(c) = [red]{fitness[^1]}[/]");
 
       // - Eliminate bottom half by replacing them by mutating top half
       Mutation.Population.MutateTopFiftyAndReplaceBottomFiftyInplace(ref population, in parameter);

@@ -7,7 +7,7 @@ internal static class Parse
 {
   public static Image.Matrix AsGrayscaleImageMatrix(in string imagePath)
   {
-    AnsiConsole.MarkupLine($"Evaluating population against [blue]{imagePath}[/]");
+    AnsiConsole.MarkupLine($"[grey23]Evaluating population against[/] [grey30]{imagePath}[/]");
 
     SKBitmap image = SKBitmap.Decode(imagePath);
     // WARN: SkiaSharp uses (x, y) coordinates from top-left of the image to locate address

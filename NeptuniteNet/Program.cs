@@ -2,12 +2,16 @@
 using Neptunite.Generate;
 using Neptunite.Image;
 using Neptunite.Tree;
+using Spectre.Console;
 
 namespace Neptunite;
 internal static class Program
 {
   static void Main()
   {
+    AnsiConsole.Write(new FigletText("Neptunite").Color(Color.Purple_2));
+    Console.WriteLine();
+
     // 1. Read configuration
     ParameterSchema parameter = Parameters.DeserializeFromFile();
     Parameters.PrintParameters(in parameter);

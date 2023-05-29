@@ -1,9 +1,9 @@
 {
-  "IterationLimit": 100,
-  "PopulationSize": 6,
+  "IterationLimit": 10,
+  "PopulationSize": 5,
   "MutationThreshold": 0.91,
   "DatasetWithFeature": "C:\\Dev\\Dataset\\True",
   "DatasetWithoutFeature": "C:\\Dev\\Dataset\\False",
   "ConvolutionMatrixDimension": 3,
-  "ConvolutionMatrixMutations": 2,
+  "ConvolutionMatrixMutations": 10,
 }

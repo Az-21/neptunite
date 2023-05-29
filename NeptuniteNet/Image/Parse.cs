@@ -10,8 +10,10 @@ internal static class Parse
     AnsiConsole.MarkupLine($"Evaluating population against [blue]{imagePath}[/]");
 
     SKBitmap image = SKBitmap.Decode(imagePath);
-    int width = image.Width;
-    int height = image.Height;
+    /// WARN: SkiaSharp uses (x, y) coordinates from top-left of the image to locate address
+    /// So, image.Width corresponds to the rows of our matrix and image.Height corresponds to the columns
+    int height = image.Width;
+    int width = image.Height;
 
     // Note: Rectangular array [,] is better suited for this operation, but Microsoft has poorly implemented it
     int[][] grayscale = new int[height][];

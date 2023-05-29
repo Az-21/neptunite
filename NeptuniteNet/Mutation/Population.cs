@@ -7,6 +7,10 @@ internal static class Population
   public static void MutateTopFiftyAndReplaceBottomFiftyInplace(ref Pop[] parents, in ParameterSchema parameter)
   {
     int pops = parameter.PopulationSize;
+
+    // Replace the bottom scoring pop of top 50% with a *completely* new pop =>> This also produces a random child
+    parents[pops - 1] = Generate.Population.GenerateInitialPopulation(in parameter, true)[0];
+
     for (int i = pops; i < 2 * pops; i++)
     {
       // Deep copy top 50% population's genes

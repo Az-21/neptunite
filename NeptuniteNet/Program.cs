@@ -39,5 +39,6 @@ internal static class Program
       Mutation.Population.MutateTopFiftyAndReplaceBottomFiftyInplace(ref population, in parameter);
     }
 
+    Output.Population.WriteTopFiftyPopsToOutput(in population, in parameter);
   }
 }

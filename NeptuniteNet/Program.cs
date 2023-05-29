@@ -26,8 +26,9 @@ internal static class Program
     // 4. Evaluate every chromosome against every image -> Select top 50% -> Mutate -> Repeat
     for (int i = 0; i < parameter.IterationLimit; i++)
     {
-      int[] fitness = Structure.EvaluatePopulation(in population, in images);
-      Console.WriteLine($"Generation {i} evaluated");
+      Console.WriteLine("\n\n");
+      AnsiConsole.Write(new Rule($"Evaluating Generation [green]{i + 1}[/]").LeftJustified());
+      int[] fitness = Structure.EvaluatePopulation(population, in images);
 
       // TODO
       // - Linked sort

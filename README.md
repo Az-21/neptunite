@@ -7,3 +7,9 @@
 <a href="" alt=".NET7">
 <img src="https://img.shields.io/badge/Built%20On-.NET7-%234E2ACD?style=for-the-badge&logo=dotnet" /></a>
  
+
+## Credits
+Special thanks 🤍 to these FOSS projects
+
+- [SkiaSharp](https://github.com/mono/SkiaSharp) | MIT License
+- [SpectreConsole](https://github.com/spectreconsole/spectre.console) | MIT License

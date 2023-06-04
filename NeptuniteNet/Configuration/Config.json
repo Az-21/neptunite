@@ -3,7 +3,9 @@
   "PopulationSize": 5,
   "MutationThreshold": 0.91,
   "TrainingDatasetWithFeature": "C:\\Dev\\Dataset\\Training\\True",
-  "TrainingDatasetWithoutFeature": "C:\\Dev\\Dataset\\Training\\False", 
+  "TrainingDatasetWithoutFeature": "C:\\Dev\\Dataset\\Training\\False",
+  "TestingDatasetWithFeature": "C:\\Dev\\Dataset\\Testing\\True",
+  "TestingDatasetWithoutFeature": "C:\\Dev\\Dataset\\Testing\\False",
   "ConvolutionMatrixDimension": 3,
   "ConvolutionMatrixMutations": 10
 }

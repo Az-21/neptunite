@@ -10,6 +10,8 @@ public readonly record struct ParameterSchema(
   int ConvolutionMatrixMutations, // Exact number of mask elements which will get mutated
   string TrainingDatasetWithFeature,
   string TrainingDatasetWithoutFeature,
+  string TestingDatasetWithFeature,
+  string TestingDatasetWithoutFeature,
   byte ConvolutionMatrixDimension
 );
 
@@ -48,6 +50,8 @@ internal static class Parameters
         .AddRow("Mutation threshold (for T1 and T2 operations)", parameter.MutationThreshold.ToString())
         .AddRow("Path of training dataset with feature", parameter.TrainingDatasetWithFeature)
         .AddRow("Path of training dataset without feature", parameter.TrainingDatasetWithoutFeature)
+        .AddRow("Path of testing dataset with feature", parameter.TestingDatasetWithFeature)
+        .AddRow("Path of testing dataset without feature", parameter.TestingDatasetWithoutFeature)
       );
   }
 

@@ -6,6 +6,8 @@ internal static class Parse
 {
   public static Image.Matrix AsGrayscaleImageMatrix(in string imagePath)
   {
+    Console.Write('.');
+
     SKBitmap image = SKBitmap.Decode(imagePath);
     // WARN: SkiaSharp uses (x, y) coordinates from top-left of the image to locate address
     // So, image.Width corresponds to the rows of our matrix and image.Height corresponds to the columns

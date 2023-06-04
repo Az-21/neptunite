@@ -8,8 +8,8 @@ public readonly record struct ParameterSchema(
   byte PopulationSize,
   double MutationThreshold, // Higher threshold will produce fewer mutations
   int ConvolutionMatrixMutations, // Exact number of mask elements which will get mutated
-  string DatasetWithFeature,
-  string DatasetWithoutFeature,
+  string TrainingDatasetWithFeature,
+  string TrainingDatasetWithoutFeature,
   byte ConvolutionMatrixDimension
 );
 
@@ -46,8 +46,8 @@ internal static class Parameters
         .AddRow("Convolution matrix dimension", convolutionMatrixDimension)
         .AddRow("Number of convolution matrix mutations", parameter.ConvolutionMatrixMutations.ToString())
         .AddRow("Mutation threshold (for T1 and T2 operations)", parameter.MutationThreshold.ToString())
-        .AddRow("Path of training dataset with feature", parameter.DatasetWithFeature)
-        .AddRow("Path of training dataset without feature", parameter.DatasetWithoutFeature)
+        .AddRow("Path of training dataset with feature", parameter.TrainingDatasetWithFeature)
+        .AddRow("Path of training dataset without feature", parameter.TrainingDatasetWithoutFeature)
       );
   }
 

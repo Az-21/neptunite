@@ -8,8 +8,8 @@ internal static class Load
 {
   public static Images PathOfImages(in Configuration.ParameterSchema parameter)
   {
-    List<string> imagesWithFeature = Load.PathOfImages(parameter.DatasetWithFeature);
-    List<string> imagesWithoutFeature = Load.PathOfImages(parameter.DatasetWithoutFeature);
+    List<string> imagesWithFeature = Load.PathOfImages(parameter.TrainingDatasetWithFeature);
+    List<string> imagesWithoutFeature = Load.PathOfImages(parameter.TrainingDatasetWithoutFeature);
 
     return new Images(imagesWithFeature, imagesWithoutFeature);
   }

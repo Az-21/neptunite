@@ -2,8 +2,8 @@
   "IterationLimit": 10,
   "PopulationSize": 5,
   "MutationThreshold": 0.91,
-  "DatasetWithFeature": "C:\\Dev\\Dataset\\True",
-  "DatasetWithoutFeature": "C:\\Dev\\Dataset\\False",
+  "TrainingDatasetWithFeature": "C:\\Dev\\Dataset\\Training\\True",
+  "TrainingDatasetWithoutFeature": "C:\\Dev\\Dataset\\Training\\False", 
   "ConvolutionMatrixDimension": 3,
-  "ConvolutionMatrixMutations": 10,
+  "ConvolutionMatrixMutations": 10
 }

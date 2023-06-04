@@ -8,8 +8,11 @@ internal static class Population
   {
     int pops = parameter.PopulationSize;
 
-    // Replace the bottom scoring pop of top 50% with a *completely* new pop =>> This also produces a random child
+    // Replace the bottom scoring pops of top 50% with a *completely* new pop =>> This also produces a random child
     parents[pops - 1] = Generate.Population.GenerateInitialPopulation(in parameter, true)[0];
+    parents[pops - 2] = Generate.Population.GenerateInitialPopulation(in parameter, true)[0];
+    parents[pops - 3] = Generate.Population.GenerateInitialPopulation(in parameter, true)[0];
+    parents[pops - 4] = Generate.Population.GenerateInitialPopulation(in parameter, true)[0];
 
     for (int i = pops; i < 2 * pops; i++)
     {

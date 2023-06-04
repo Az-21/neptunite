@@ -24,6 +24,7 @@ internal static class Program
     Pop[] population = Population.GenerateInitialPopulation(in parameter);
 
     // 4. Evaluate every chromosome against every image -> Select top 50% -> Mutate -> Repeat
+    int[] fitnessSeries = new int[parameter.IterationLimit]; // Track fitness as time-series (for graphing)
     for (int i = 0; i < parameter.IterationLimit; i++)
     {
       Console.WriteLine("\n\n");
@@ -32,6 +33,9 @@ internal static class Program
 
       // Linked descending sort according to fitness (higher is better)
       Array.Sort(fitness, population, Comparer<int>.Create((a, b) => b.CompareTo(a)));
+
+      // Logging and tracking
+      fitnessSeries[i] = fitness[0];
       AnsiConsole.MarkupLine($"\nFittest chromosome in generation [green]{i + 1}[/]: f(c) = [navy]{fitness[0]}[/]");
       AnsiConsole.MarkupLine($"Weakest chromosome in generation [green]{i + 1}[/]: f(c) = [red]{fitness[^1]}[/]");
 
@@ -39,6 +43,6 @@ internal static class Program
       Mutation.Population.MutateTopFiftyAndReplaceBottomFiftyInplace(ref population, in parameter);
     }
 
-    Output.Population.WriteTopFiftyPopsToOutput(in population, in parameter);
+    Output.Population.LogOutput(in population, in parameter, in fitnessSeries);
   }
 }

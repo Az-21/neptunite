@@ -7,6 +7,8 @@
 <a href="" alt=".NET7">
 <img src="https://img.shields.io/badge/Built%20On-.NET7-%234E2ACD?style=for-the-badge&logo=dotnet" /></a>
  
+## Releases
+[v1.0.4](https://drive.google.com/drive/folders/1GERY8GJS2Y0Gt8rm2fOEjhk9X06VUZq-?usp=sharing)
 
 ## Credits
 Special thanks 🤍 to these FOSS projects

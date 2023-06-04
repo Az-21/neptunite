@@ -19,7 +19,7 @@ internal static class Evaluate
   // Assign +1 to correct answer, -1 to incorrect answer
   // Here, we're just forcing algorithm to classify to left and right of x=0
   private const int CorrectAnswerScore = 1;
-  private const int IncorrectAnswerScore = -1;
+  private const int IncorrectAnswerScore = 0;
   public static int Fitness(in Image.Matrix matrixA, in Image.Matrix matrixB, in bool isImageWithFeature)
   {
     int customMatrixProduct = CustomMatrixProduct(matrixA, matrixB);

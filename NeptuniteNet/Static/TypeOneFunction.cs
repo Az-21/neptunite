@@ -37,10 +37,16 @@ internal static class TypeOneFunction
   private static readonly Func<int, int> Sustain = (x) => x;
   private static void SustainInplace(ref Image.Matrix matrix) => Apply(ref matrix, Sustain);
 
+  private static readonly Func<int, int> ScaleDownBy10 = (x) => x / 10;
+  private static void ScaleDownBy10Inplace(ref Image.Matrix matrix) => Apply(ref matrix, ScaleDownBy10);
+
+  private static readonly Func<int, int> ScaleDownBy100 = (x) => x / 100;
+  private static void ScaleDownBy100Inplace(ref Image.Matrix matrix) => Apply(ref matrix, ScaleDownBy100);
+
   private static readonly Func<int, int> Zero = (x) => 0 * x;
   private static void ZeroInplace(ref Image.Matrix matrix) => Apply(ref matrix, Zero);
 
-  private enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, Negate, Zero, Sustain, }
+  private enum TypeOneOperation { LogBase10, LogBase2, NaturalLog, Sin, Cos, Tan, Negate, Zero, Sustain, ScaleDownBy10, ScaleDownBy100 }
   public static readonly int T1Count = Enum.GetNames(typeof(TypeOneOperation)).Length;
 
   public static void ApplyTypeOneOperationInplace(ref Image.Matrix matrix, in int operation)
@@ -56,6 +62,8 @@ internal static class TypeOneFunction
       case (int)TypeOneOperation.Negate: NegateInplace(ref matrix); break;
       case (int)TypeOneOperation.Zero: ZeroInplace(ref matrix); break;
       case (int)TypeOneOperation.Sustain: SustainInplace(ref matrix); break;
+      case (int)TypeOneOperation.ScaleDownBy10: ScaleDownBy10Inplace(ref matrix); break;
+      case (int)TypeOneOperation.ScaleDownBy100: ScaleDownBy100Inplace(ref matrix); break;
       default: throw new NotImplementedException();
     }
   }

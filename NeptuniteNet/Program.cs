@@ -27,7 +27,7 @@ internal static class Program
     int[] fitnessSeries = new int[parameter.IterationLimit]; // Track fitness as time-series (for graphing)
     for (int i = 0; i < parameter.IterationLimit; i++)
     {
-      Console.WriteLine("\n\n");
+      Console.WriteLine("\n");
       AnsiConsole.Write(new Rule($"Evaluating Generation {i + 1}").LeftJustified().RuleStyle("green"));
       int[] fitness = Structure.EvaluatePopulation(population, in images);
 

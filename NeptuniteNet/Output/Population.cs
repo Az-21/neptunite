@@ -20,7 +20,7 @@ internal static class Population
     string relative = Directory.GetCurrentDirectory();
     string outputFolderPath = Path.Combine(relative, "Output");
     if (!Directory.Exists(outputFolderPath)) { Directory.CreateDirectory(outputFolderPath); }
-    string outputFilePath = Path.Combine(outputFolderPath, $"output_{dateTime:yyyy-MM-dd-HH-mm}.cs");
+    string outputFilePath = Path.Combine(outputFolderPath, $"Neptunite-Output-{dateTime:yyyy-MM-dd-HH-mm}.cs");
 
     using StreamWriter writer = new(outputFilePath);
     writer.Write(outputString);

@@ -2,6 +2,7 @@
 using Neptunite.Generate;
 using Neptunite.Image;
 using Neptunite.Tree;
+using Spectre.Console;
 
 namespace Neptunite.Test;
 internal static class Test
@@ -10,9 +11,17 @@ internal static class Test
   {
     Images images = Load.PathOfImages(in parameter, true);
     Pop[] bestPop = SelectBestChromosome(in population);
-    int[] fitness = Structure.EvaluatePopulation(bestPop, in images);
 
-    return new int[2] { fitness[0], CalculateMaximumPossibleFitness(in images) };
+    Console.WriteLine("\n\n");
+    AnsiConsole.Write(new Rule("Testing fittest chromosmome").LeftJustified().RuleStyle("green"));
+
+    int[] fitness = Structure.EvaluatePopulation(bestPop, in images);
+    int maxFitness = CalculateMaximumPossibleFitness(in images);
+
+    AnsiConsole.MarkupLine($"Fitness of best chromosome against testing database: [blue]{fitness}[/]");
+    AnsiConsole.MarkupLine($"Maximum possible fitness against testing database: [green]{maxFitness}[/]");
+
+    return new int[2] { fitness[0], maxFitness };
   }
 
   private static int CalculateMaximumPossibleFitness(in Images images) =>

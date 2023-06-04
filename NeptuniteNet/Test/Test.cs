@@ -18,7 +18,7 @@ internal static class Test
     int[] fitness = Structure.EvaluatePopulation(bestPop, in images);
     int maxFitness = CalculateMaximumPossibleFitness(in images);
 
-    AnsiConsole.MarkupLine($"Fitness of best chromosome against testing database: [blue]{fitness}[/]");
+    AnsiConsole.MarkupLine($"\nFitness of best chromosome against testing database: [fuchsia]{fitness[0]}[/]");
     AnsiConsole.MarkupLine($"Maximum possible fitness against testing database: [green]{maxFitness}[/]");
 
     return new int[2] { fitness[0], maxFitness };

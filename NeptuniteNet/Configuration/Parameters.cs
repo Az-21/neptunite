@@ -70,8 +70,16 @@ internal static class Parameters
       AnsiConsole.MarkupLine("Mutation threshold must be in [0, 1)");
       Environment.Exit(0);
     }
+
+    if (!VerifyMinimumPopulation(parameter.PopulationSize))
+    {
+      AnsiConsole.MarkupLine("[red]FATAL[/]");
+      AnsiConsole.MarkupLine("Population of at least 5 is required");
+      Environment.Exit(0);
+    }
   }
 
   private static bool VerifyConvolutionMatrixDimension(in byte dimension) => dimension % 2 != 0;
   private static bool VerifyThresholdRange(in double threshold) => threshold is >= 0 and < 1;
+  private static bool VerifyMinimumPopulation(in int population) => population >= 5;
 }

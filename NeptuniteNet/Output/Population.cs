@@ -5,10 +5,11 @@ using System.Text;
 namespace Neptunite.Output;
 internal static class Population
 {
-  public static void LogOutput(in Pop[] population, in ParameterSchema parameter, in int[] fitnessSeries)
+  public static void LogOutput(in Pop[] population, in ParameterSchema parameter, in int[] fitnessSeries, in int[] testingResults)
   {
     Pop[] pops = FilterTopPops(in population, in parameter);
     StringBuilder sb = new();
+    sb.AppendLine(ObjectDumper.Dump(testingResults, DumpStyle.CSharp));
     sb.AppendLine(ObjectDumper.Dump(fitnessSeries, DumpStyle.CSharp));
     sb.AppendLine(ObjectDumper.Dump(pops, DumpStyle.CSharp));
     WriteOutputCSharpFile(sb.ToString());

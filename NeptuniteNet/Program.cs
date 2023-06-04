@@ -43,6 +43,7 @@ internal static class Program
       Mutation.Population.MutateTopFiftyAndReplaceBottomFiftyInplace(ref population, in parameter);
     }
 
-    Output.Population.LogOutput(in population, in parameter, in fitnessSeries);
+    int[] testingResults = Test.Test.FittestChromosome(in population, in parameter);
+    Output.Population.LogOutput(in population, in parameter, in fitnessSeries, in testingResults);
   }
 }

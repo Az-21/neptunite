@@ -6,8 +6,16 @@ public readonly record struct Images(List<string> WithFeature, List<string> With
 
 internal static class Load
 {
-  public static Images PathOfImages(in Configuration.ParameterSchema parameter)
+  public static Images PathOfImages(in Configuration.ParameterSchema parameter, in bool isTesting = false)
   {
+    if (isTesting)
+    {
+      List<string> testingImagesWithFeature = Load.PathOfImages(parameter.TestingDatasetWithFeature);
+      List<string> testingImagesWithoutFeature = Load.PathOfImages(parameter.TestingDatasetWithoutFeature);
+
+      return new Images(testingImagesWithFeature, testingImagesWithoutFeature);
+    }
+
     List<string> imagesWithFeature = Load.PathOfImages(parameter.TrainingDatasetWithFeature);
     List<string> imagesWithoutFeature = Load.PathOfImages(parameter.TrainingDatasetWithoutFeature);
 
